@@ -1,12 +1,10 @@
 name: Output Event Details
 on:  [issues, workflow_dispatch]
 jobs:
-  test:
+  output-info:
     runs-on: ubuntu-latest
     steps:
-      - name: Get code
-        uses: actions/checkout@v3
-      - name: Install dependencies
-        run: npm ci
       - name: Output details
-        run: echo "${{ toJSON(github) }}"
+        run: |
+          echo "${{ toJSON(github) }}"
+          echo "${{ toJSON(github.event) }}"
